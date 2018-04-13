@@ -116,6 +116,22 @@ export default class MonthPicker extends Component {
     }
     static defaultProps = {
         years: getYearsByNum(5),
+        lang: {
+          months: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ]
+        },
         onChange(year, month, idx) {},
         theme: 'light',
         show: false,
