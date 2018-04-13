@@ -23,7 +23,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Tappable from 'react-tapper'
-
+import {ArrowLeft, ArrowRight} from "./arrows/Arrows";
 
 const isBrowser = (typeof window !== "undefined" && typeof document !== "undefined")
 
@@ -264,8 +264,8 @@ export default class MonthPicker extends Component {
             <div className="rmp-pad" key={padIndex}>
                 <div>
                     <label>{labelPreText}{labelYear}</label>
-                    <i className={["rmp-tab", "rmp-btn", "prev", prevCss].join(' ')} data-id={padIndex} onClick={this.goPrevYear}>{'<'}</i>
-                    <i className={["rmp-tab", "rmp-btn", "next", nextCss].join(' ')} data-id={padIndex} onClick={this.goNextYear}>{'>'}</i>
+                    <i className={["rmp-tab", "rmp-btn", "prev", prevCss].join(' ')} data-id={padIndex} onClick={this.goPrevYear}><ArrowLeft /></i>
+                    <i className={["rmp-tab", "rmp-btn", "next", nextCss].join(' ')} data-id={padIndex} onClick={this.goNextYear}><ArrowRight /></i>
                 </div>
                 <ul>
                     {
