@@ -111,6 +111,7 @@ export default class MonthPicker extends Component {
         onShow: PropTypes.func,
         onDismiss: PropTypes.func,
         onClickAway: PropTypes.func,
+        isOutsideRange: PropTypes.func,
         theme: PropTypes.string,
         show: PropTypes.bool,
     }
@@ -132,6 +133,7 @@ export default class MonthPicker extends Component {
             "Dec"
           ]
         },
+        isOutsideRange: (year, month) => false,
         onChange(year, month, idx) {},
         theme: 'light',
         show: false,
@@ -250,6 +252,7 @@ export default class MonthPicker extends Component {
     optionPad(padIndex) {
         let values = this.state.values
             , value = values[padIndex]
+            , isOutRange = this.props.isOutsideRange
             , labelYears = this.state.labelYears
             , labelYear = labelYears[padIndex] = labelYears[padIndex] || value.year
             , ymArr = this.state.years
@@ -291,6 +294,7 @@ export default class MonthPicker extends Component {
                             if (yearActive && m === value.month) {
                                 css = 'active'
                             }
+
                             if (atMinYear && m < ymArr[0].min) {
                                 css = 'disable'
                             }
@@ -306,6 +310,9 @@ export default class MonthPicker extends Component {
                                 else if ((y > vy && padIndex === 1) || (y < vy && padIndex === 0)) {
                                     css = 'disable'
                                 }
+                            }
+                            if (isOutRange(labelYear, m)) {
+                              css = 'disable'
                             }
                             let clickHandler = css !== 'disable' ? this.handleClickMonth : undefined
                             return (
